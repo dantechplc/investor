@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+
+<head>
+	<!-- Meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{% block description %}<meta name="description" content="A trusted destination for Investors worldwide, Start your investment journey with the best opportunity."> {% endblock %}
+	<meta name="keywords" content="online investment platform, financial management system, investment tracking, portfolio management, stock investments, cryptocurrency investments, online trading platform, personal finance app, fintech platform, secure investment, real-time investment dashboard, investment analytics, payment integration, Stripe payments, PayPal payments, investment reporting, user portfolio management">
+	<meta name="author" content="">
+	<meta name="theme-color" content="#DF4478">
+	<!-- critical preload -->
+	<link rel="preload" href="{% static 'frontend/js/vendors/bootstrap.bundle.min.js' %}" as="script">
+	<link rel="preload" href="{% static 'frontend/css/style.css' %}" as="style">
+	<!-- icon preload -->
+	<link rel="preload" href="{% static 'frontend/fonts/fa-brands-400.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{% static 'frontend/fonts/fa-solid-900.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<!-- font preload -->
+	<link rel="preload" href="{% static 'frontend/fonts/dm-sans-v11-latin-700.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="{% static 'frontend/fonts/dm-sans-v11-latin-regular.woff2' %}" as="font" type="font/woff2" crossorigin>
+	<!-- stylesheet -->
+	<link rel="stylesheet" href="{% static 'frontend/css/style.css' %}">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'frontend/img/favicon.ico' %}" type="image/x-icon">
+	<!-- Touch icon -->
+	<link rel="apple-touch-icon-precomposed" href="{% static 'frontend/img/apple-touch-icon.png' %}">
+	<title>{% block title %} Home {% endblock %}</title>
+</head>
+
+<body>
+	<!-- page loader begin -->
+	<div class="page-loader w-100 h-100 bg-white d-flex justify-content-center align-items-center position-fixed overflow-hidden">
+		<div class="spinner-grow spinner-grow-sm text-primary"></div>
+		<div class="spinner-grow spinner-grow-sm text-primary"></div>
+		<div class="spinner-grow spinner-grow-sm text-primary"></div>
+	</div>
+	<!-- page loader end -->
+	<!-- ticker content begin -->
+
+					<script src="https://widgets.coingecko.com/gecko-coin-price-marquee-widget.js"></script>
+					<gecko-coin-price-marquee-widget locale="en" outlined="true" coin-ids="" initial-currency="usd"></gecko-coin-price-marquee-widget>
+
+	<!-- ticker content end -->
+	<!-- header begin -->
+	{% include 'frontend/header.html' %}
+	<!-- header end -->
+	<main>
+		<!-- slideshow content begin -->
+		<!-- slideshow content end -->
+		<!-- section content begin -->
+		{% block content %}
+
+		{% endblock %}
+		<!-- section content end -->
+
+	</main>
+	<!-- footer begin -->
+	{% include 'frontend/footer.html' %}
+	<!-- footer end -->
+	<!-- to top begin -->
+	<div class="d-none d-md-block">
+		<a href="#" class="to-top fas fa-arrow-up text-decoration-none text-white"></a>
+	</div>
+	<!-- to top end -->
+	<!-- javascript -->
+	<script src="{% static 'frontend/js/vendors/bootstrap.bundle.min.js' %}"></script>
+	<script src="{% static 'frontend/js/vendors/vanilla-marquee.min.js' %}"></script>
+	<script src="{% static 'frontend/js/utilities.min.js' %}"></script>
+	<script src="{% static 'frontend/js/config-theme.js' %}"></script>
+</body>
+
+
+</html>
