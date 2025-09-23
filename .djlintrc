@@ -1,0 +1,22 @@
+[tool.djlint]
+# Tell djLint we’re working with Django templates
+profile = "django"
+
+# File extensions to check/format
+extension = "html,htm"
+
+# Indentation spaces
+indent = 4
+
+# Max line length (wraps long lines)
+line_length = 120
+
+# Exclude some directories (like staticfiles or migrations)
+exclude = "migrations,static,venv,node_modules"
+
+# Whether to automatically sort attributes in tags
+format_attribute_sort = true
+
+# Keep template tags neatly aligned
+format_css = true
+format_js = true

@@ -1,47 +1,74 @@
-	<footer class="bg-light pb-4 in-avo-footer">
-		<div class="container">
-			<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-4 gy-lg-0">
-				<div class="col">
-					<h5>Overview</h5>
-					<ul class="list-unstyled">
-						<li><a href="#">Open account</a></li>
-						<li><a href="#">Our company</a></li>
-						<li><a href="#">Login</a></li>
-						<li><a href="#">Careers</a></li>
-					</ul>
-				</div>
-				<div class="col">
-					<h5>Account</h5>
-					<ul class="list-unstyled">
-						<li><a href="#">Client services</a></li>
-						<li><a href="#">VIP offering</a></li>
-						<li><a href="#">Corporate account</a></li>
-						<li><a href="#">Support center</a></li>
-						<li><a href="#">Refer a friend</a></li>
-					</ul>
-				</div>
-				<div class="col">
-					<h5>Others</h5>
-					<ul class="list-unstyled">
-						<li><a href="#">Trade inspirations</a></li>
-						<li><a href="#">Outrageous predictions</a></li>
-						<li><a href="#">Quarterly outlook</a></li>
-						<li><a href="#">Margin information</a></li>
-					</ul>
-				</div>
-				<div class="col">
-					<h5>Get in Touch</h5>
-					<p>Contact us any time for getting support.</p>
-					<a class="footer-email" href="mailto:hello@avo-invest.id">hello@avo-invest.id</a>
-					<!-- social media begin -->
-					<div class="social-media-list small hstack">
-						<div><a href="https://www.facebook.com" class="color-facebook text-decoration-none"><i class="fab fa-facebook"></i> Facebook</a></div>
-						<div><a href="https://x.com" class="color-twitter text-decoration-none"><i class="fab fa-x-twitter"></i> X</a></div>
-						<div><a href="https://www.instagram.com" class="color-instagram text-decoration-none"><i class="fab fa-instagram"></i> Instagram</a></div>
-					</div>
-					<!-- social media end -->
-				</div>
-
-			</div>
-		</div>
-	</footer>
+<footer class="bg-light pb-4 in-avo-footer">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-4 gy-lg-0">
+            <div class="col">
+                <h5>Overview</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{% url 'accounts:signup' %}">Open account</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:signup' %}">Our company</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Account</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{% url 'accounts:signup' %}">Client services</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:signup' %}">Corporate account</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'frontend:contact' %}">Support center</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'accounts:signup' %}">Refer a friend</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Others</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#">Trade inspirations</a>
+                    </li>
+                    <li>
+                        <a href="#">Outrageous predictions</a>
+                    </li>
+                    <li>
+                        <a href="#">Quarterly outlook</a>
+                    </li>
+                    <li>
+                        <a href="#">Margin information</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <h5>Get in Touch</h5>
+                <p>Contact us any time for getting support.</p>
+                <a class="footer-email" href="mailto:{{ company.support_email }}">{{ company.support_email }}</a>
+                <!-- social media begin -->
+                <div class="social-media-list small hstack">
+                    <div>
+                        <a href="https://www.facebook.com"
+                           class="color-facebook text-decoration-none"><i class="fab fa-facebook"></i> Facebook</a>
+                    </div>
+                    <div>
+                        <a href="https://x.com" class="color-twitter text-decoration-none"><i class="fab fa-x-twitter"></i> X</a>
+                    </div>
+                    <div>
+                        <a href="https://www.instagram.com"
+                           class="color-instagram text-decoration-none"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                </div>
+                <!-- social media end -->
+            </div>
+        </div>
+    </div>
+</footer>

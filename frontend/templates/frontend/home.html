@@ -1,226 +1,280 @@
 {% extends 'frontend/base.html' %}
 {% load static %}
-{% block title %} Investor  {% endblock %}
+{% block title %}Investor{% endblock %}
 {% block content %}
-
-<section>
-  <div id="slideshow" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-    <div class="carousel-inner">
-
-      <!-- Slide 1 -->
-      <div class="carousel-item active">
-        <div class="carousel-caption d-flex align-items-center">
-          <div class="container">
-            <div class="row g-0 align-items-md-center">
-              <div class="col-md-5 col-lg-5 order-first">
-                <h1 class="fw-bold display-4">Build a Better Future with Avo. Investment</h1>
-                <p class="lead mb-3 d-none d-lg-block">
-                  Start growing your passive income today. Invest from as low as 100 EUR in various instruments.
-                </p>
-                <a href="#" class="btn btn-primary rounded-pill d-none d-sm-inline">
-                  Get started<i class="fas fa-arrow-right fa-sm ms-1"></i>
-                </a>
-              </div>
-              <div class="col-md-7 col-lg-7 order-last position-relative">
-                <img src="{% static 'frontend/img/in-slide-img-1.svg' %}" class="image-slide" alt="image-slide">
-              </div>
+    <section>
+        <div id="slideshow"
+             class="carousel slide"
+             data-bs-ride="carousel"
+             data-bs-interval="3000">
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="carousel-caption d-flex align-items-center">
+                        <div class="container">
+                            <div class="row g-0 align-items-md-center">
+                                <div class="col-md-5 col-lg-5 order-first">
+                                    <h1 class="fw-bold display-4">Build a Better Future with Crypto Trade . Globe</h1>
+                                    <p class="lead mb-3 d-none d-lg-block">
+                                        Start growing your passive income today. Trade and Invest from as low as 50 USD in various instruments.
+                                    </p>
+                                    <a href="{% url 'accounts:signup' %}"
+                                       class="btn btn-primary rounded-pill d-none d-sm-inline">
+                                        Get started<i class="fas fa-arrow-right fa-sm ms-1"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-7 col-lg-7 order-last position-relative">
+                                    <img src="{% static 'frontend/img/in-slide-img-1.svg' %}"
+                                         class="image-slide"
+                                         alt="image-slide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="carousel-caption d-flex align-items-center">
+                        <div class="container">
+                            <div class="row g-0 align-items-md-center">
+                                <div class="col-md-5 col-lg-5 order-first">
+                                    <h1 class="fw-bold display-4">Manage & grow investment assets securely</h1>
+                                    <p class="lead mb-3 d-none d-lg-block">
+                                        With our trusted regulations and experience, you can easily & safely build your investment assets.
+                                    </p>
+                                    <a href="{% url 'accounts:signup' %}"
+                                       class="btn btn-primary rounded-pill d-none d-sm-inline">
+                                        Get started<i class="fas fa-arrow-right fa-sm ms-1"></i>
+                                    </a>
+                                </div>
+                                <div class="col-md-7 col-lg-7 order-last position-relative">
+                                    <img src="{% static 'frontend/img/in-slide-img-2.svg' %}"
+                                         class="image-slide"
+                                         alt="image-slide">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="carousel-item">
-        <div class="carousel-caption d-flex align-items-center">
-          <div class="container">
-            <div class="row g-0 align-items-md-center">
-              <div class="col-md-5 col-lg-5 order-first">
-                <h1 class="fw-bold display-4">Manage & grow investment assets securely</h1>
-                <p class="lead mb-3 d-none d-lg-block">
-                  With our trusted regulations and experience, you can easily & safely build your investment assets.
-                </p>
-                <a href="#" class="btn btn-primary rounded-pill d-none d-sm-inline">
-                  Get started<i class="fas fa-arrow-right fa-sm ms-1"></i>
-                </a>
-              </div>
-              <div class="col-md-7 col-lg-7 order-last position-relative">
-                <img src="{% static 'frontend/img/in-slide-img-2.svg' %}" class="image-slide" alt="image-slide">
-              </div>
+            <!-- Controls -->
+            <button class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#slideshow"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#slideshow"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button"
+                        data-bs-target="#slideshow"
+                        data-bs-slide-to="0"
+                        class="active"
+                        aria-current="true"></button>
+                <button type="button" data-bs-target="#slideshow" data-bs-slide-to="1"></button>
             </div>
-          </div>
         </div>
-      </div>
-
-    </div>
-
-    <!-- Controls -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#slideshow" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#slideshow" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-
-    <!-- Indicators -->
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#slideshow" data-bs-slide-to="0" class="active" aria-current="true"></button>
-      <button type="button" data-bs-target="#slideshow" data-bs-slide-to="1"></button>
-    </div>
-  </div>
-</section>
-
-
-        		<section class="pb-5 in-avo-10">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
-						<h2 class="d-none">avo 10 section</h2>
-						<div class="card border-0">
-							<div class="card-body">
-								<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 d-flex align-items-center">
-									<div class="col d-flex justify-content-center align-items-center border-end-lg">
-										<div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
-											<img src="{% static 'frontend/img/in-avo-10-icon-1.png' %}" alt="icon" width="38" height="38">
-										</div>
-										<div>
-											<p class="fw-bold mb-0">Advanced<br>analysis tools</p>
-										</div>
-									</div>
-									<div class="col d-flex justify-content-center align-items-center border-end-lg">
-										<div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
-											<img src="{% static 'frontend/img/in-avo-10-icon-2.png' %}" alt="icon" width="38" height="38">
-										</div>
-										<div>
-											<p class="fw-bold mb-0">Fast execution<br>0 commision</p>
-										</div>
-									</div>
-									<div class="col d-flex justify-content-center align-items-center border-end-lg">
-										<div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
-											<img src="{% static 'frontend/img/in-avo-10-icon-3.png' %}" alt="icon" width="38" height="38">
-										</div>
-										<div>
-											<p class="fw-bold mb-0">Low minimum<br>deposit of $100</p>
-										</div>
-									</div>
-									<div class="col d-flex justify-content-center align-items-center">
-										<div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
-											<img src="{% static 'frontend/img/in-avo-10-icon-4.png' %}" alt="icon" width="38" height="38">
-										</div>
-										<div>
-											<p class="fw-bold mb-0">Over 2,100<br>assets to trade</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-
-        		<section class="py-5 in-avo-11">
-			<div class="container">
-				<div class="row gy-5 gy-lg-0">
-					<div class="col-lg-6">
-						<h1><span class="text-highlight">Elevate your trading</span> with the premium insights and robust education.</h1>
-						<p class="lead text-muted mb-md-3">You need easy-to-use and powerful technology, service you can rely on, and value-oriented pricing and fees that are transparent and fair, you get the value you deserve.</p>
-						<div class="row d-flex align-items-center">
-							<div class="col-md-12 col-lg-5">
-								<img src="{% static 'frontend/img/in-avo-11-image.webp' %}" class="mx-auto mx-md-auto mx-lg-0 d-block mb-2 mb-md-3 mb-lg-0" alt="people" width="200">
-							</div>
-							<div class="col-md-12 col-lg-7">
-								<p class="text-secondary">One of the most influential investment minds in the world. He has both a powerful presence and the confidence to make large bets based on his convictions.</p>
-								<h6 class="mt-2 mb-0">Anthony Torres</h6>
-								<span class="blockquote-footer">Chief Investment Officer &amp; Director</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="card-badge">
-							<div class="card card-body ms-lg-5 position-relative">
-								<span class="badge rounded-pill bg-primary">Low rates start from</span>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="price-display">
-										<h3 class="mb-0 text-primary">Stocks</h3>
-										<h1 class="fw-bold mb-0">
-											<span class="currency">$</span>2<span class="decimal">95</span>
-										</h1>
-										<p class="text-muted mt-0">Other fee may apply</p>
-									</div>
-									<div>
-										<i class="fas fa-chart-pie fa-8x"></i>
-									</div>
-								</div>
-								<hr class="my-2" >
-								<ul class="fa-ul lh-lg mt-2 mb-4">
-									<li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>85 millisecond avg trade execution</li>
-									<li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Multi-asset coverage; Stocks &amp; Commodities</li>
-									<li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>No dealing desk, no requotes</li>
-									<li><span class="fa-li"><i class="fas fa-check text-primary"></i></span>Expert Advisors supported</li>
-								</ul>
-								<a href="#" class="btn btn-outline-primary rounded-pill">Create Account<i class="fas fa-arrow-right fa-sm ms-1"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-
-        		<section class="py-5 mt-4 in-avo-12" style="background: url({% static 'frontend/img/in-avo-12-background.jpg' %}) no-repeat bottom center; background-size: cover;">
-			<div class="container">
-				<div class="row justify-content-center">
-					<div class="col-lg-8 text-center">
-						<h1 class="text-white">We are committed to meeting your CFD and FX trading needs</h1>
-						<p class="lead text-white d-none d-lg-block">Excepteur occaeca cupidata non proident fugiat nulla pariatur quasi architecto beatae, sunt in culpa quila officia deserunt mollit anim id est aute laborum.</p>
-						<a href="#" class="btn btn-primary rounded-pill mt-2 mb-4">Discover the benefits<i class="fas fa-arrow-right ms-1"></i></a>
-					</div>
-				</div>
-			</div>
-		</section>
-
-
-		<section class="py-5 in-avo-13">
-			<div class="container">
-				<div class="row justify-content-center mt-4">
-					<div class="col-md-12 col-lg-10">
-						<div class="card card-body text-center">
-							<h2 class="mt-2 mb-3">Fast account opening in <span class="text-highlight">3 simple steps</span></h2>
-							<div class="row row-cols-1 row-cols-md-3">
-								<div class="col">
-									<div class="icon-wrap bg-primary rounded-circle flex-shrink-0 mb-1">
-										<span class="fw-bold fs-4 text-primary">1</span>
-									</div>
-									<h5 class="mt-1">Register</h5>
-									<p>Choose an account type and submit your application</p>
-								</div>
-								<div class="col">
-									<div class="icon-wrap bg-primary rounded-circle flex-shrink-0 mb-1">
-										<span class="fw-bold fs-4 text-primary">2</span>
-									</div>
-									<h5 class="mt-1">Fund</h5>
-									<p>Fund your account using a wide range of funding methods</p>
-								</div>
-								<div class="col">
-									<div class="icon-wrap bg-primary rounded-circle flex-shrink-0 mb-1">
-										<span class="fw-bold fs-4 text-primary">3</span>
-									</div>
-									<h5 class="mt-1">Invest</h5>
-									<p>Start investing in investment instruments that you like</p>
-								</div>
-							</div>
-							<a href="#" class="btn btn-outline-primary rounded-pill mt-2">Create Account<i class="fas fa-arrow-right fa-sm ms-1"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-
-
-
-
+    </section>
+    <section class="pb-5 in-avo-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="d-none">CTG 10 section</h2>
+                    <div class="card border-0">
+                        <div class="card-body">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 d-flex align-items-center">
+                                <div class="col d-flex justify-content-center align-items-center border-end-lg">
+                                    <div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
+                                        <img src="{% static 'frontend/img/in-avo-10-icon-1.png' %}"
+                                             alt="icon"
+                                             width="38"
+                                             height="38">
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold mb-0">
+                                            Advanced
+                                            <br>
+                                            analysis tools
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center align-items-center border-end-lg">
+                                    <div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
+                                        <img src="{% static 'frontend/img/in-avo-10-icon-2.png' %}"
+                                             alt="icon"
+                                             width="38"
+                                             height="38">
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold mb-0">
+                                            Fast execution
+                                            <br>
+                                            0 commision
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center align-items-center border-end-lg">
+                                    <div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
+                                        <img src="{% static 'frontend/img/in-avo-10-icon-3.png' %}"
+                                             alt="icon"
+                                             width="38"
+                                             height="38">
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold mb-0">
+                                            Low minimum
+                                            <br>
+                                            deposit of $50
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center align-items-center">
+                                    <div class="icon-wrap bg-primary rounded-circle flex-shrink-0 me-2">
+                                        <img src="{% static 'frontend/img/in-avo-10-icon-4.png' %}"
+                                             alt="icon"
+                                             width="38"
+                                             height="38">
+                                    </div>
+                                    <div>
+                                        <p class="fw-bold mb-0">
+                                            Over 2,100
+                                            <br>
+                                            assets to trade
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 in-avo-11">
+        <div class="container">
+            <div class="row gy-5 gy-lg-0">
+                <div class="col-lg-6">
+                    <h1>
+                        <span class="text-highlight">Elevate your trading</span> with the premium insights and robust education.
+                    </h1>
+                    <p class="lead text-muted mb-md-3">
+                        You need easy-to-use and powerful technology, service you can rely on, and value-oriented pricing and fees that are transparent and fair, you get the value you deserve.
+                    </p>
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-12 col-lg-5">
+                            <img src="{% static 'frontend/img/in-avo-11-image.webp' %}"
+                                 class="mx-auto mx-md-auto mx-lg-0 d-block mb-2 mb-md-3 mb-lg-0"
+                                 alt="people"
+                                 width="200">
+                        </div>
+                        <div class="col-md-12 col-lg-7">
+                            <p class="text-secondary">
+                                One of the most influential investment minds in the world. He has both a powerful presence and the confidence to make large bets based on his convictions.
+                            </p>
+                            <h6 class="mt-2 mb-0">Anthony Torres</h6>
+                            <span class="blockquote-footer">Chief Investment Officer &amp; Director</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card-badge">
+                        <div class="card card-body ms-lg-5 position-relative">
+                            <span class="badge rounded-pill bg-primary">Many assets</span>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="price-display">
+                                    <h3 class="mb-0 text-primary">Trade Crypto and Stocks</h3>
+                                    <h1 class="fw-bold mb-0">
+                                        <span class="currency"></span><span class="decimal"></span>
+                                    </h1>
+                                    <p class="text-muted mt-0">fast transactions</p>
+                                </div>
+                                <div>
+                                    <i class="fas fa-chart-pie fa-8x"></i>
+                                </div>
+                            </div>
+                            <hr class="my-2">
+                            <ul class="fa-ul lh-lg mt-2 mb-4">
+                                <li>
+                                    <span class="fa-li"><i class="fas fa-check text-primary"></i></span>85 millisecond avg trade execution
+                                </li>
+                                <li>
+                                    <span class="fa-li"><i class="fas fa-check text-primary"></i></span>Multi-asset coverage; Stocks &amp; Commodities
+                                </li>
+                                <li>
+                                    <span class="fa-li"><i class="fas fa-check text-primary"></i></span>No dealing desk, no requotes
+                                </li>
+                                <li>
+                                    <span class="fa-li"><i class="fas fa-check text-primary"></i></span>Expert Advisors supported
+                                </li>
+                            </ul>
+                            <a href="{% url 'accounts:signup' %}"
+                               class="btn btn-outline-primary rounded-pill">Create Account<i class="fas fa-arrow-right fa-sm ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 mt-4 in-avo-12"
+             style="background: url({% static 'frontend/img/in-avo-12-background.jpg' %}) no-repeat bottom center;
+                    background-size: cover">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="text-white">We are committed to meeting your CFD and FX trading needs</h1>
+                    <p class="lead text-white d-none d-lg-block">
+                        We provide a secure, transparent, and user-friendly environment where clients can trade, grow, and manage their digital assets with confidence.
+                    </p>
+                    <a href="{% url 'accounts:signup' %}"
+                       class="btn btn-primary rounded-pill mt-2 mb-4">Discover the benefits<i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 in-avo-13">
+        <div class="container">
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-12 col-lg-10">
+                    <div class="card card-body text-center">
+                        <h2 class="mt-2 mb-3">
+                            Fast account opening in <span class="text-highlight">3 simple steps</span>
+                        </h2>
+                        <div class="row row-cols-1 row-cols-md-3">
+                            <div class="col">
+                                <div class="icon-wrap bg-primary rounded-circle flex-shrink-0 mb-1">
+                                    <span class="fw-bold fs-4 text-primary">1</span>
+                                </div>
+                                <h5 class="mt-1">Register</h5>
+                                <p>Choose an account type and submit your application</p>
+                            </div>
+                            <div class="col">
+                                <div class="icon-wrap bg-primary rounded-circle flex-shrink-0 mb-1">
+                                    <span class="fw-bold fs-4 text-primary">2</span>
+                                </div>
+                                <h5 class="mt-1">Fund</h5>
+                                <p>Fund your account using a wide range of funding methods</p>
+                            </div>
+                            <div class="col">
+                                <div class="icon-wrap bg-primary rounded-circle flex-shrink-0 mb-1">
+                                    <span class="fw-bold fs-4 text-primary">3</span>
+                                </div>
+                                <h5 class="mt-1">Invest</h5>
+                                <p>Start investing in investment instruments that you like</p>
+                            </div>
+                        </div>
+                        <a href="{% url 'accounts:signup' %}"
+                           class="btn btn-outline-primary rounded-pill mt-2">Create Account<i class="fas fa-arrow-right fa-sm ms-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}

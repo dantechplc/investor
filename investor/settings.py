@@ -24,15 +24,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     # my apps
     'accounts',
     'frontend',
+    'transaction',
+
+    # other apps
+     "phonenumber_field",
+     'sweetify',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,6 +60,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # your custom one:
+                "frontend.context_processors.company_context",
             ],
         },
     },
@@ -70,15 +80,15 @@ DATABASES = {
     }
 }
 
-
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
 
 # Password validators
-AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
-]
+# AUTH_PASSWORD_VALIDATORS = [
+#     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+#     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+#     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+#     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+# ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -119,5 +129,33 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 # Authentication
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    'django.contrib.auth.backends.AllowAllUsersModelBackend',
+    'accounts.backend.CaseInsensitiveModelBackend'
 ]
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_REDIRECT_URL = 'accounts:login'
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "OPTIONS": {
+            "location": BASE_DIR / "media",   # where uploads go
+        },
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        "OPTIONS": {
+            "location": BASE_DIR / "static",  # collected static files
+        },
+    },
+}
+# Compatibility for older packages
+DEFAULT_FILE_STORAGE = STORAGES["default"]["BACKEND"]
+
+SITE_DOMAIN = "https://cryptotradeglobe.com"  # change to your actual domain
+
+SESSION_EXPIRE_SECONDS = 600
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY_GRACE_PERIOD = 5
+SESSION_TIMEOUT_REDIRECT = 'accounts:login'
+
+
