@@ -134,12 +134,12 @@ def LoginView(request):
 
             # Superuser → main Django admin
             if user.is_superuser:
-                sweetify.success(request, "Welcome Back!", text="Redirecting you to the Admin Dashboard.")
+                messages.success(request, "Welcome Back!", text="Redirecting you to the Super Admin Dashboard.")
                 return redirect(reverse('admin:index'))
 
             # Staff but not superuser → boss admin area
             if user.is_staff:
-                sweetify.success(request, "Welcome Back!", text="Redirecting you to the Staff Dashboard.")
+                sweetify.success(request, "Welcome Back!", text="Redirecting you to the Admin Dashboard.")
                 return redirect('boss:admin-dashboard')
 
             # Normal users → client dashboard
@@ -208,14 +208,14 @@ def clients_group(sender, instance, created, **kwargs):
     if created:
         try:
             group = Group.objects.get(name='clients')
-            instance.groups.add(group)
+            instance.user.groups.add(group)
 
         except Group.DoesNotExist as err:
             group = Group.objects.create(name='clients')
-            instance.groups.add(group)
+            instance.user.groups.add(group)
 
 
-post_save.connect(clients_group, sender=User)
+post_save.connect(clients_group, sender=Client)
 
 def logout_view(request):
     logout(request)

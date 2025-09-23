@@ -23,9 +23,9 @@ from transaction.models import Transactions
 User = get_user_model()
 
 
-# @login_required(login_url='accounts:login')
-# @allowed_users(allowed_roles=['admin'])
-# @never_cache
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def dashboard(request):
      # Example stats - replace with real queries
     total_clients = Client.objects.count()
@@ -65,7 +65,9 @@ def dashboard(request):
     }
     return render(request, 'accounts/boss/dashboard.html', context)
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_list(request):
     query = request.GET.get('q', '')
     clients = Client.objects.all().order_by('-user__date_joined')  # latest first
@@ -94,7 +96,9 @@ def client_list(request):
     return render(request, 'accounts/boss/client_list.html', context)
 
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_profile(request, id):
     client = get_object_or_404(Client, id=id)
     status = client.Verification_status
@@ -158,7 +162,9 @@ def client_profile(request, id):
     }
     return render(request, 'accounts/boss/client_profile.html', context)
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_account(request, id):
     client = get_object_or_404(Client, id=id)
 
@@ -198,7 +204,9 @@ def client_account(request, id):
 
 
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_investment(request, id):
     client = get_object_or_404(Client, id=id)
      # Make sure we only fetch this client's investments
@@ -211,7 +219,9 @@ def client_investment(request, id):
     }
     return  render(request, 'accounts/boss/client_investment.html', context)
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_kyc(request, id):
     client = get_object_or_404(Client, id=id)
      # Make sure we only fetch this client's investments
@@ -224,7 +234,9 @@ def client_kyc(request, id):
     }
     return  render(request, 'accounts/boss/client_kyc.html', context)
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_transactions(request):
     if request.method == "POST":
         tx_id = request.POST.get("transaction_id")
@@ -309,6 +321,9 @@ def client_transactions(request):
         }
     return render(request, "accounts/boss/transactions.html", context)
 
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def wallet_manager(request):
     wallets = AdminWallet.objects.all().order_by("-id")
 
@@ -340,6 +355,9 @@ def wallet_delete(request, id):
     sweetify.error(request, "Invalid request")
     return redirect("boss:wallet_manager")
 
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def transaction_detail(request, id):
     # Only get transactions with type DEPOSIT or WITHDRAWAL
     transaction = get_object_or_404(
@@ -408,7 +426,9 @@ def transaction_detail(request, id):
     }
     return render(request, "accounts/boss/transaction_detail.html", context)
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_delete(request, id):
     client = get_object_or_404(Client, pk=id)
     if client:
@@ -419,6 +439,9 @@ def client_delete(request, id):
         sweetify.success(request, f'Client with email {user.email} deleted!')
     return redirect('boss:clients')
 
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_deactivate(request, id):
     client = get_object_or_404(Client, pk=id)
     if client:
@@ -428,6 +451,9 @@ def client_deactivate(request, id):
         sweetify.success(request, f'Client with email {client} is deactivated !')
     return redirect('boss:clients')
 
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def client_activate(request, id):
     client = get_object_or_404(Client, pk=id)
     if client:
@@ -437,7 +463,9 @@ def client_activate(request, id):
         sweetify.success(request, f'Client with email {client}  activated !')
     return redirect('boss:clients')
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def kyc_delete(request, id):
     kyc = get_object_or_404(KYC, pk=id)
     if kyc:
@@ -445,7 +473,9 @@ def kyc_delete(request, id):
         sweetify.success(request, f'Client with email {kyc.user} KYC has been deleted!')
     return redirect('boss:client_profile', kyc.user.id)
 
-
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['admin'])
+@never_cache
 def kyc_verify(request, id):
     kyc = get_object_or_404(KYC, pk=id)
     status = Client.objects.get(user=kyc.user.user)
