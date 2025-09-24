@@ -131,7 +131,7 @@ class InvestmentProfileAdmin(admin.ModelAdmin):
 class PaymentMethodsAdmin(admin.ModelAdmin):
     list_display = (
         "name", "is_active", "is_crypto", "for_deposit",
-        "for_withdrawal", "transfer_access", "transaction_fee",
+        "for_withdrawal", "transfer_access",
     )
     search_fields = ("name", "wallet_address")
     list_filter = ("is_active", "is_crypto", "for_deposit", "for_withdrawal", "transfer_access")

@@ -17,7 +17,7 @@ class TransactionsAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ("Transaction Info", {
-            "fields": ("user", "trx_id", "amount", "fees", "status", "transaction_type", "date")
+            "fields": ("user", "trx_id", "amount",  "status", "transaction_type", "date")
         }),
         ("Payment Details", {
             "fields": ("investment_name", "payment_methods", "wallet_address", "payment_description")
