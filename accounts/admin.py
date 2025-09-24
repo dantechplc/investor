@@ -158,7 +158,7 @@ from .models import AdminWallet
 class AdminWalletAdmin(admin.ModelAdmin):
     list_display = ('name', 'wallet_address', 'wallet_qr_code_display')
     search_fields = ('name', 'wallet_address')
-    # readonly_fields = ('wallet_qr_code_display',)
+
 
     # Optional: show QR code image in admin
     def wallet_qr_code_display(self, obj):
