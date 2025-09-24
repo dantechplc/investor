@@ -3,13 +3,15 @@
 import os
 import sys
 from dotenv import load_dotenv
+from decouple import config
 
 load_dotenv()
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'investor.settings_pro' if os.environ.get(
-        'DJANGO_ENVIRONMENT') == 'production' else 'investor.settings_dev')
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'investor.settings_pro')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'investor.settings_pro' if config('DJANGO_ENVIRONMENT') == 'production' else 'investor.settings_dev')
+
 
     try:
         from django.core.management import execute_from_command_line
