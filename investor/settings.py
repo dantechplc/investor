@@ -134,22 +134,23 @@ AUTHENTICATION_BACKENDS = [
 ]
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_REDIRECT_URL = 'accounts:login'
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-        "OPTIONS": {
-            "location": BASE_DIR / "media",   # where uploads go
-        },
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-        "OPTIONS": {
-            "location": BASE_DIR / "static",  # collected static files
-        },
-    },
-}
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "django.core.files.storage.FileSystemStorage",
+#         "OPTIONS": {
+#             "location": BASE_DIR / "media",   # where uploads go
+#         },
+#     },
+#     "staticfiles": {
+#         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#         "OPTIONS": {
+#             "location": BASE_DIR / "static",  # collected static files
+#         },
+#     },
+# }
 # Compatibility for older packages
-DEFAULT_FILE_STORAGE = STORAGES["default"]["BACKEND"]
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"
 
 SITE_DOMAIN = "https://cryptotradeglobe.com"  # change to your actual domain
 
