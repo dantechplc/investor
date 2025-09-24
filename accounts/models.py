@@ -212,7 +212,6 @@ class PaymentMethods(models.Model):
     for_withdrawal = models.BooleanField(default=False)
     wallet_address = models.CharField(max_length=300, blank=True, null=True)
     wallet_qrcode = models.ImageField(blank=True, null=True)
-    transaction_fee = MoneyField(max_digits=19, decimal_places=2, default=0, blank=True, null=True)
     deposit_transaction_message = models.TextField(blank=True, null=True)
     withdrawal_transaction_message = models.TextField(blank=True, null=True)
 
