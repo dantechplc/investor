@@ -12,7 +12,7 @@ from decouple import config
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'investor.settings_pro' if config('DJANGO_ENVIRONMENT') == 'production' else 'investor.settings_dev')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'investor.settings_pro')
 
 
 application = get_wsgi_application()
