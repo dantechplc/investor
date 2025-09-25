@@ -3,7 +3,7 @@ import os
 from .settings import *
 
 DEBUG = False
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "cryptotradeglobe.com" "13.53.193.32" "www.cryptotradeglobe.com").split(",")
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "cryptotradeglobe.com" "13.60.95.113" "www.cryptotradeglobe.com").split(",")
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.zoho.com'
