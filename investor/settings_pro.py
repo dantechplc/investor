@@ -31,3 +31,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.cryptotradeglobe.com",
     "http://16.171.140.202",
 ]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
