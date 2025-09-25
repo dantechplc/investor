@@ -134,7 +134,6 @@ def LoginView(request):
 
             # Superuser → main Django admin
             if user.is_superuser:
-                messages.success(request, "Welcome Back!", text="Redirecting you to the Super Admin Dashboard.")
                 return redirect(reverse('admin:index'))
 
             # Staff but not superuser → boss admin area

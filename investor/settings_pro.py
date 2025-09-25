@@ -7,12 +7,12 @@ ALLOWED_HOSTS = ["cryptotradeglobe.com", "www.cryptotradeglobe.com", "16.171.140
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = 'smtp.zoho.com'
+EMAIL_HOST = 'smtp-relay.brevo.com'
 DEFAULT_FROM_EMAIL = 'CryptoTrade Globe<info@cryptotradeglobe.com>'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'info@cryptotradeglobe.com'
-EMAIL_HOST_PASSWORD = 'D@ntech1212'
+EMAIL_HOST_USER = '97dbca001@smtp-brevo.com'
+EMAIL_HOST_PASSWORD = 'rqkmBjws1yPxN94G'
 
 # Security
 SECURE_SSL_REDIRECT = True
