@@ -3,7 +3,10 @@ import os
 from .settings import *
 
 DEBUG = False
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "cryptotradeglobe.com" "16.171.140.202" "www.cryptotradeglobe.com").split(",")
+ALLOWED_HOSTS = os.environ.get(
+    "DJANGO_ALLOWED_HOSTS",
+    "cryptotradeglobe.com,www.cryptotradeglobe.com,16.171.140.202,127.0.0.1,localhost"
+).split(",")
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'smtp.zoho.com'
@@ -22,8 +25,11 @@ EMAIL_HOST_PASSWORD = 'D@ntech1212'
 CORS_ALLOWED_ORIGINS = [
     "https://cryptotradeglobe.com",
     "https://www.cryptotradeglobe.com",
+    "http://16.171.140.202",
 ]
+
 CSRF_TRUSTED_ORIGINS = [
     "https://cryptotradeglobe.com",
     "https://www.cryptotradeglobe.com",
+    "http://16.171.140.202",
 ]
