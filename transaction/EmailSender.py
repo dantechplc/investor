@@ -72,7 +72,7 @@ def roi_success_email(user, amount, balance, date, plan, trx_id, *args, **kwargs
         message = render_to_string(
             "transaction/dsh/emails/roi_success_email.html",
             {
-                "name": user.name,
+                "name": user.username,
                 'amount': amount,
                 'trx_id': trx_id,
                 'date': date,

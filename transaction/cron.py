@@ -33,7 +33,7 @@ def daily_roi():
 
             # Record transaction
             trx = Transactions.objects.create(
-                user=account_client,
+                user=account_client.user,
                 amount=interest,
                 status='Successful',
                 investment_name=Investment.objects.get(name=investment.investment),
@@ -50,7 +50,7 @@ def daily_roi():
                 plan=Investment.objects.get(name=investment.investment),
                 trx_id=trx.trx_id,
             )
-
+            print("✅ ROI email sent", today)
 
 
 
@@ -76,7 +76,7 @@ def investment_expired_check():
             print('✅ Expired investment found for', doc.user)
 
             # Update related transaction
-            Transactions.objects.filter(trx_id=doc.trx_id).update(status='Expired')
+            Transactions.objects.filter(pk=doc.trx_id).update(status='Expired')
 
             # Notify admin
             company_email = CompanyProfile.objects.first()
