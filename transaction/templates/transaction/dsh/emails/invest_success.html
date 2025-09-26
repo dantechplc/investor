@@ -276,7 +276,7 @@
                                                                                       font-size: 14px;
                                                                                       text-align: center;
                                                                                       mso-line-height-alt: 24px">
-                                                                                <span style="font-size:16px;">Hi <strong><u>{{ name },</u></strong>,</span>
+                                                                                <span style="font-size:16px;">Hi <strong><u>{{ name }}</u></strong>,</span>
                                                                             </p>
                                                                             <p style="margin: 0;
                                                                                       font-size: 14px;
@@ -286,7 +286,7 @@
                                                                                       font-size: 14px;
                                                                                       text-align: center;
                                                                                       mso-line-height-alt: 24px">
-                                                                                <span style="font-size:16px;">Your {{ plan }} investment of <strong><span style="">{{ amount }}</span></strong><span style="">is confirmed and now earning {{ earning }} daily</span> in <span style="">your ROI account. Next payout is  {{ next_payout }}.
+                                                                                <span style="font-size:16px;">Your {{ plan }} investment of <strong><span style="">{{ amount }}</span></strong><span style=""> is confirmed and now earning {{ earning }} daily</span> in <span style="">your ROI account.
                                                                                     <br />
                                                                                 </span></span>
                                                                             </p>
@@ -527,7 +527,7 @@
                                                                             <p style="margin: 0; font-size: 16px; text-align: left;">{{ expected_roi }}</p>
                                                                             <p style="margin: 0; font-size: 16px; text-align: left;">{{ balance }}</p>
                                                                             <p style="margin: 0; font-size: 16px; text-align: left;">{{ trx_id }}</p>
-                                                                            <p style="margin: 0; font-size: 16px; text-align: left;">{{ date }}</p>
+                                                                            <p style="margin: 0; font-size: 16px; text-align: left;">{{ date|date }}</p>
                                                                         </div>
                                                                     </div>
                                                                 </td>

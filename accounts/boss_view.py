@@ -375,7 +375,8 @@ def transaction_detail(request, id):
                 transaction.save()
                 account = Account.objects.get(user=transaction.user)
                 account.main_balance += transaction.amount
-                account.save(update_fields=['main_balance'])
+                account.total_amount_deposited += transaction.amount
+                account.save(update_fields=['main_balance', 'total_amount_deposited'])
                 EmailSender.deposit_success(amount=transaction.amount, trx_id=transaction.trx_id,
                                            name=transaction.user.first_name, email=transaction.user,
                                            date=transaction.date, balance=account.main_balance)
@@ -386,7 +387,8 @@ def transaction_detail(request, id):
                 transaction.save()
                 account = Account.objects.get(user=transaction.user)
                 account.main_balance -= transaction.amount
-                account.save(update_fields=['main_balance'])
+                account.total_amount_withdrawn += transaction.amount
+                account.save(update_fields=['main_balance', 'total_amount_withdrawn'])
                 EmailSender.withdraw_success(amount=transaction.amount, trx_id=transaction.trx_id,
                                            name=transaction.user.first_name, email=transaction.user,
                                            date=transaction.date, balance=account.main_balance)
