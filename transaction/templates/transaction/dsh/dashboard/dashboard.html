@@ -1,19 +1,19 @@
 {% extends "transaction/dsh/base.html" %}
 {% load static %}
 {% block content %}
-    <style>
+<style>
 .circle-row {
   display: flex;
-  justify-content: space-between; /* spread evenly */
+  justify-content: space-between;
   align-items: center;
   gap: 1rem;
   padding: 0.5rem;
 }
 
 .action-circle {
-  flex: 1;                        /* take equal width */
-  max-width: 120px;               /* don't get too big on large screens */
-  aspect-ratio: 1/1;              /* keeps them perfect circles */
+  flex: 1;
+  max-width: 120px;
+  aspect-ratio: 1/1;
   border-radius: 50%;
   background: #fff;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -22,7 +22,7 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  margin: 0 auto;                 /* centers each within its flex space */
+  margin: 0 auto;
 }
 
 .action-circle i {
@@ -31,264 +31,218 @@
 }
 
 .action-circle span {
-  font-size: 0.7rem;          /* smaller text on small screens */
+  font-size: 0.7rem;
   font-weight: 500;
   color: #333;
-  text-align: center;         /* center under icon */
+  text-align: center;
   line-height: 1.2;
-  word-break: break-word;     /* force break if word is long */
-  max-width: 80%;             /* prevent touching borders */
+  word-break: break-word;
+  max-width: 80%;
 }
 
 .action-circle:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
+</style>
 
+<div id="content-page" class="content-page">
+  <div class="container-fluid">
 
+    {% if request.user.client.Verification_status == "Unverified" %}
+      <div class="col-lg-12 alert alert-danger alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span style="color:black;" aria-hidden="true">&times;</span>
+        </button>
+        <strong>Verify your Identity click <a href="{% url 'accounts:verify' %}">Here</a></strong>
+      </div>
+    {% endif %}
 
+    {% if request.user.client.Verification_status == "Under Review" %}
+      <div class="col-lg-12 alert alert-warning alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span style="color:black;" aria-hidden="true">&times;</span>
+        </button>
+        <strong>Account Under Review !</strong>
+      </div>
+    {% endif %}
 
-
-    </style>
-    <!-- Page Content  -->
-    <div id="content-page" class="content-page">
-        <div class="container-fluid">
-            {% if request.user.client.Verification_status == "Unverified" %}
-                <div class="col-lg-12 alert alert-danger alert-dismissible fade show">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span style="color:black;" aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>Verify your Identity click <a href="{% url 'accounts:verify' %}">Here</a> </strong>  <span></span>
-                </div>
-            {% endif %}
-            {% if  request.user.client.Verification_status == "Under Review" %}
-                <div class="col-lg-12 alert alert-warning alert-dismissible fade show">
-                    <button type="button " class="close " data-dismiss="alert" aria-label="Close">
-                        <span style="color:black;" aria-hidden="true">&times;</span>
-                    </button>
-                    <strong>Account Under Review !</strong>
-                </div>
-            {% endif %}
-            <div class="d-flex flex-row flex-nowrap w-100">
-                <div class="p-2 flex-fill">
-                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-                        <div class="iq-card-body">
-                            <div class="top-block d-flex align-items-center ">
-                                <h5 class="pr-3">Available Balance</h5>
-                                <span class="badge badge-primary">USD</span>
-                            </div>
-                            <h3>
-                                <span class="">{{ request.user.client.account.main_balance }}</span>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-2 flex-fill">
-                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-                        <div class="iq-card-body">
-                            <div class="top-block d-flex align-items-center ">
-                                <h5 class="pr-3">ROI Balance</h5>
-                                <span class="badge badge-primary">USD</span>
-                            </div>
-                            <h3>
-                                <span class="">{{ request.user.client.account.roi_balance }}</span>
-                            </h3>
-                        </div>
-                    </div>
-                </div>
+    <!-- Balances -->
+    <div class="d-flex flex-row flex-nowrap w-100">
+      <div class="p-2 flex-fill">
+        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+          <div class="iq-card-body">
+            <div class="top-block d-flex align-items-center">
+              <h5 class="pr-3">Available Balance</h5>
+              <span class="badge badge-primary">USD</span>
             </div>
-            <div class="d-flex justify-content-between align-items-center flex-nowrap circle-row">
-                <!-- Deposit -->
-                <a href="{% url 'transaction:deposit' %}"
-                   class="action-circle text-decoration-none">
-                    <i class="ri-wallet-line text-primary"></i>
-                    <span>Deposit</span>
-                </a>
-                <!-- Portfolio -->
-                <a href="{% url 'transaction:portfolio' %}"
-                   class="action-circle text-decoration-none">
-                    <i class="ri-pie-chart-line text-info"></i>
-                    <span>Portfolio</span>
-                </a>
-                <!-- Invest -->
-                <a href="{% url 'transaction:new-investment' %}"
-                   class="action-circle text-decoration-none">
-                    <i class="ri-bar-chart-line text-warning"></i>
-                    <span>Invest</span>
-                </a>
-                <!-- Send -->
-                <a href="{% url 'transaction:withdraw' %}"
-                   class="action-circle text-decoration-none">
-                    <i class="ri-send-plane-line text-danger"></i>
-                    <span>Send</span>
-                </a>
-            </div>
-            <div class="row mt-3">
-                <div class="col-lg-6">
-                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-                        <div class="iq-card-body">
-                            <div class="row">
-                                <div class="iq-card-header d-flex justify-content-between">
-                                    <div class="iq-header-title">
-                                        <h4 class="card-title">Market</h4>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <!-- TradingView Widget BEGIN -->
-                                    <div class="tradingview-widget-container">
-                                        <div class="tradingview-widget-container__widget"></div>
-                                        <div class="tradingview-widget-copyright">
-                                            <a href="https://www.tradingview.com/crypto-coins-screener/"
-                                               rel="noopener nofollow"
-                                               target="_blank"><span class="blue-text">Cryptocurrency market by TradingView</span></a>
-                                        </div>
-                                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                                          {
-                                          "defaultColumn": "performance",
-                                          "screener_type": "crypto_mkt",
-                                          "displayCurrency": "USD",
-                                          "colorTheme": "light",
-                                          "isTransparent": false,
-                                          "locale": "en",
-                                          "width": "100%",
-                                          "height": 550
-                                        }
-                                        </script>
-                                    </div>
-                                    <!-- TradingView Widget END -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
-                        <div class="iq-card-header d-flex justify-content-between">
-                            <div class="iq-header-title">
-                                <h4 class="card-title">Latest Transactions</h4>
-                            </div>
-                        </div>
-                        <div class="iq-card-body">
-                            <ul class="suggestions-lists m-0 p-0">
-                                <ul id="transaction-list">
-                                    {% for transaction in transactions %}
-                                        <li class="d-flex mb-4 align-items-center transaction-item"
-                                            data-id="{{ transaction.id }}"
-                                            data-type="{{ transaction.get_transaction_type_display }}"
-                                            data-date="{{ transaction.date|date:'M d, Y H:i' }}"
-                                            data-amount="{{ transaction.amount }}"
-                                            data-status="{{ transaction.status }}"
-                                            data-reference="{{ transaction.trx_id }}"
-                                            data-description="{{ transaction.payment_description }}">
-                                            {% if transaction.status == 'Successful' %}
-                                                <div class="profile-icon iq-bg-white alert-success">
-                                                    <span><i class="ri-check-fill"></i></span>
-                                                </div>
-                                            {% elif transaction.status == 'pending' %}
-                                                <div class="profile-icon iq-bg-warning alert-info">
-                                                    <span><i class="ri-information-line"></i></span>
-                                                </div>
-                                            {% elif transaction.status == 'failed' %}
-                                                <div class="profile-icon iq-bg-danger alert-danger">
-                                                    <span><i class="ri-alert-line"></i></span>
-                                                </div>
-                                            {% else %}
-                                                <div class="profile-icon bg-white alert-info">
-                                                    <span><i class="ri-information-line"></i></span>
-                                                </div>
-                                            {% endif %}
-                                            <div class="media-support-info ml-3">
-                                                <h6>
-                                                    {% if transaction.get_transaction_type_display == 'INVESTMENT' %}
-                                                        {{ transaction.investment_name }}
-                                                    {% else %}
-                                                        {{ transaction.payment_methods }}
-                                                    {% endif %}
-                                                    - {{ transaction.get_transaction_type_display }}
-                                                </h6>
-                                                <p class="mb-0">{{ transaction.date }}</p>
-                                            </div>
-                                            <div class="media-support-amount ml-3">
-                                                <h6>
-                                                    <b>{{ transaction.amount }}</b>
-                                                </h6>
-                                                <p class="mb-0">{{ transaction.status }}</p>
-                                            </div>
-                                        </li>
-                                    {% empty %}
-                                        <p class="text-danger">No transactions yet!</p>
-                                    {% endfor %}
-                                </ul>
-                                <!-- Single Reusable Modal -->
-                                <div class="modal fade"
-                                     id="transactionModal"
-                                     tabindex="-1"
-                                     role="dialog"
-                                     aria-labelledby="transactionModalLabel"
-                                     aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="transactionModalLabel">Transaction Details</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p>
-                                                    <strong>Type:</strong> <span id="modal-type"></span>
-                                                </p>
-                                                <p>
-                                                    <strong>Date:</strong> <span id="modal-date"></span>
-                                                </p>
-                                                <p>
-                                                    <strong>Amount:</strong> <span id="modal-amount"></span>
-                                                </p>
-                                                <p>
-                                                    <strong>Status:</strong> <span id="modal-status"></span>
-                                                </p>
-                                                <p>
-                                                    <strong>Transaction ID:</strong> <span id="modal-reference"></span>
-                                                </p>
-                                                <p>
-                                                    <strong>Description:</strong> <span id="modal-description"></span>
-                                                </p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3><span>{{ request.user.client.account.main_balance }}</span></h3>
+          </div>
         </div>
+      </div>
+      <div class="p-2 flex-fill">
+        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+          <div class="iq-card-body">
+            <div class="top-block d-flex align-items-center">
+              <h5 class="pr-3">ROI Balance</h5>
+              <span class="badge badge-primary">USD</span>
+            </div>
+            <h3><span>{{ request.user.client.account.roi_balance }}</span></h3>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-between align-items-center flex-nowrap circle-row">
+      <a href="{% url 'transaction:deposit' %}" class="action-circle text-decoration-none">
+        <i class="ri-wallet-line text-primary"></i><span>Deposit</span>
+      </a>
+      <a href="{% url 'transaction:portfolio' %}" class="action-circle text-decoration-none">
+        <i class="ri-pie-chart-line text-info"></i><span>Portfolio</span>
+      </a>
+      <a href="{% url 'transaction:new-investment' %}" class="action-circle text-decoration-none">
+        <i class="ri-bar-chart-line text-warning"></i><span>Invest</span>
+      </a>
+      <a href="{% url 'transaction:withdraw' %}" class="action-circle text-decoration-none">
+        <i class="ri-send-plane-line text-danger"></i><span>Send</span>
+      </a>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-lg-6">
+        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+          <div class="iq-card-body">
+            <div class="row">
+              <div class="iq-card-header d-flex justify-content-between">
+                <div class="iq-header-title"><h4 class="card-title">Market</h4></div>
+              </div>
+              <div class="col-sm-12">
+                <!-- TradingView Widget -->
+                <div class="tradingview-widget-container">
+                  <div class="tradingview-widget-container__widget"></div>
+                  <div class="tradingview-widget-copyright">
+                    <a href="https://www.tradingview.com/crypto-coins-screener/"
+                       rel="noopener nofollow" target="_blank">
+                      <span class="blue-text">Cryptocurrency market by TradingView</span>
+                    </a>
+                  </div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                  {
+                    "defaultColumn": "performance",
+                    "screener_type": "crypto_mkt",
+                    "displayCurrency": "USD",
+                    "colorTheme": "light",
+                    "isTransparent": false,
+                    "locale": "en",
+                    "width": "100%",
+                    "height": 550
+                  }
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Transactions -->
+      <div class="col-md-6">
+        <div class="iq-card iq-card-block iq-card-stretch iq-card-height">
+          <div class="iq-card-header d-flex justify-content-between">
+            <div class="iq-header-title"><h4 class="card-title">Latest Transactions</h4></div>
+          </div>
+          <div class="iq-card-body">
+            <ul id="transaction-list" class="list-unstyled m-0 p-0">
+              {% for transaction in transactions %}
+                <li class="d-flex mb-4 align-items-center transaction-item"
+                    data-id="{{ transaction.id }}"
+                    data-type="{{ transaction.get_transaction_type_display }}"
+                    data-date="{{ transaction.date|date:'M d, Y H:i' }}"
+                    data-amount="{{ transaction.amount }}"
+                    data-status="{{ transaction.status }}"
+                    data-reference="{{ transaction.trx_id }}"
+                    data-description="{{ transaction.payment_description }}">
+                  {% if transaction.status == 'Successful' %}
+                    <div class="profile-icon iq-bg-white alert-success"><span><i class="ri-check-fill"></i></span></div>
+                  {% elif transaction.status == 'pending' %}
+                    <div class="profile-icon iq-bg-warning alert-info"><span><i class="ri-information-line"></i></span></div>
+                  {% elif transaction.status == 'failed' %}
+                    <div class="profile-icon iq-bg-danger alert-danger"><span><i class="ri-alert-line"></i></span></div>
+                  {% else %}
+                    <div class="profile-icon bg-white alert-info"><span><i class="ri-information-line"></i></span></div>
+                  {% endif %}
+                  <div class="media-support-info ml-3">
+                    <h6>
+                      {% if transaction.get_transaction_type_display == 'INVESTMENT' %}
+                        {{ transaction.investment_name }}
+                      {% elif transaction.get_transaction_type_display == 'ROI' %}
+                        {{ transaction.investment_name }}
+                      {% else %}
+                        {{ transaction.payment_methods }}
+                      {% endif %}
+                      - {{ transaction.get_transaction_type_display }}
+                    </h6>
+                    <p class="mb-0">{{ transaction.date }}</p>
+                  </div>
+                  <div class="media-support-amount ml-3">
+                    <h6><b>{{ transaction.amount }}</b></h6>
+                    <p class="mb-0">{{ transaction.status }}</p>
+                  </div>
+                </li>
+              {% empty %}
+                <p class="text-danger">No transactions yet!</p>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- ✅ Modal moved outside of lists -->
+<div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="transactionModalLabel">Transaction Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Type:</strong> <span id="modal-type"></span></p>
+        <p><strong>Date:</strong> <span id="modal-date"></span></p>
+        <p><strong>Amount:</strong> <span id="modal-amount"></span></p>
+        <p><strong>Status:</strong> <span id="modal-status"></span></p>
+        <p><strong>Transaction ID:</strong> <span id="modal-reference"></span></p>
+        <p><strong>Description:</strong> <span id="modal-description"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-    const transactionItems = document.querySelectorAll('.transaction-item');
-    const modal = $('#transactionModal');
+document.addEventListener('DOMContentLoaded', function () {
+  const transactionItems = document.querySelectorAll('.transaction-item');
+  const modal = $('#transactionModal');
 
-    transactionItems.forEach(item => {
-        item.addEventListener('click', function () {
-            // Populate modal fields
-            document.getElementById('modal-type').textContent = this.dataset.type;
-            document.getElementById('modal-date').textContent = this.dataset.date;
-            document.getElementById('modal-amount').textContent = this.dataset.amount;
-            document.getElementById('modal-status').textContent = this.dataset.status;
-            document.getElementById('modal-reference').textContent = this.dataset.reference;
-            document.getElementById('modal-description').textContent = this.dataset.description;
+  transactionItems.forEach(item => {
+    item.addEventListener('click', function () {
+      document.getElementById('modal-type').textContent = this.dataset.type;
+      document.getElementById('modal-date').textContent = this.dataset.date;
+      document.getElementById('modal-amount').textContent = this.dataset.amount;
+      document.getElementById('modal-status').textContent = this.dataset.status;
+      document.getElementById('modal-reference').textContent = this.dataset.reference;
+      document.getElementById('modal-description').textContent = this.dataset.description;
 
-            // Show modal
-            modal.modal('show');
-        });
+      modal.modal('show'); // ✅ Bootstrap 4
     });
+  });
 });
-
 </script>
 {% endblock %}
