@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # other apps
      "phonenumber_field",
      'sweetify',
+     'django_crontab',
 ]
 
 MIDDLEWARE = [
