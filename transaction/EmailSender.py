@@ -64,3 +64,28 @@ def kyc_email_sender(user, email):
             mail_subject, message, to=[to_email]
         )
     return  email.send()
+
+
+def roi_success_email(user, amount, balance, date, plan, trx_id, *args, **kwargs):
+        date = date
+        mail_subject = 'ROI Successful'
+        message = render_to_string(
+            "transaction/dsh/emails/roi_success_email.html",
+            {
+                "name": user.name,
+                'amount': amount,
+                'trx_id': trx_id,
+                'date': date,
+                 'plan': plan,
+                'balance': balance,
+                "company": CompanyProfile.objects.first()
+            },
+        )
+        to_email = str(user)
+        email = EmailMultiAlternatives(
+                mail_subject, message, to=[to_email]
+            )
+        email.attach_alternative(message, 'text/html')
+        email.content_subtype = 'html'
+        email.mixed_subtype = 'related'
+        return email.send()

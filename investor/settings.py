@@ -159,3 +159,10 @@ SESSION_TIMEOUT_REDIRECT = 'accounts:login'
 
 DEFAULT_CURRENCY = "USD"
 
+# Cronjob
+CRONJOBS = [
+('* * * * 1-5', 'transaction.cron.daily_roi', '>> /var/log/crontask.log 2>&1'),
+('* * * * 1-5', 'transaction.cron.investment_expired_check', '>> /var/log/cronexp_dte.log 2>&1'),
+
+]
+
