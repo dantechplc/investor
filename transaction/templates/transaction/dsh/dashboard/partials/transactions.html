@@ -23,19 +23,12 @@
                             <span class="text-danger">- {{ transaction.amount }}</span>
                         {% elif transaction.transaction_type == 'TRANSFER' %}
                             <span class="text-danger">- {{ transaction.amount }}</span>
-                        {% elif transaction.transaction_type == 'CREDIT' %}
-                            <span class="text-primary">+ {{ transaction.amount }}</span>
-                        {% elif transaction.transaction_type == 'EXCHANGE' %}
-                            <span class="text-primary">+ {{ transaction.amount }}</span>
-                        {% elif transaction.transaction_type == 'CREDIT' %}
-                            <span class="text-primary">+ {{ transaction.amount }}</span>
-                        {% elif transaction.transaction_type == 'REFUND' %}
-                            <span class="text-primary">+ {{ transaction.amount }}</span>
-                        {% elif transaction.transaction_type == 'CARD FUNDING' %}
-                            <span class="text-primary">+ {{ transaction.amount }}</span>
-                        {% elif transaction.transaction_type == 'CARD WITHDRAWAL' %}
-                            <span class="text-danger">- {{ transaction.amount }}</span>
+
                         {% elif transaction.transaction_type == 'INVESTMENT' %}
+                            <span class="text-danger">- {{ transaction.amount }}</span>
+                        {% elif transaction.transaction_type == 'ROI' %}
+                            <span class="text-success">+ {{ transaction.amount }}</span>
+                        {% elif transaction.transaction_type == 'WITHDRAW' %}
                             <span class="text-danger">- {{ transaction.amount }}</span>
                         {% else %}
                             <span class="text-info">- {{ transaction.amount }}</span>
