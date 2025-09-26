@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class StaticViewSitemap(Sitemap):
-    # protocol = 'https'
+    protocol = 'https'
     def items(self):
         return ['frontend:home', 'frontend:about', 'accounts:login']
 
